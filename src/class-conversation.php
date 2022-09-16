@@ -28,7 +28,7 @@ class Conversation {
             $conversation->recipient  = $recipient;
             $conversation->has_avatar = ! empty( $conversation->avatar );
 
-            if ( str_contains( 'group', $conversation->type ) && empty( $conversation->avatar ) && count( $conversation->peers ) > 1 ) {
+            if ( strpos( $conversation->type, 'group' ) !== false && empty( $conversation->avatar ) && count( $conversation->peers ) > 1 ) {
                 $first_two_peers      = array_slice( $conversation->peers, 0, 2 );
                 $avatars              = array_column( $first_two_peers, 'avatar' );
                 $conversation->avatar = $avatars;
@@ -39,11 +39,9 @@ class Conversation {
             // Limit the size of $conversation->title
             $conversation->title = substr( $conversation->title, 0, 20 );
             $conversation->title = esc_html( $conversation->title );
-            $conversation->avatar = esc_html( $conversation->avatar );
         }
 
         $conversation->meta = json_decode( $conversation->meta, true );
-        $conversation->meta = is_array( $conversation->meta ) ? prixchat_escape($conversation->meta) : [];
         $conversation->url  = $conversation->id;
 
         return $conversation;

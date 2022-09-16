@@ -34,7 +34,6 @@ class Conversations_Controller extends Base_Controller {
 		] );
 
 		$conversation = Conversation::find( $find_params );
-		$conversation = prixchat_escape( $conversation );
 
 		return new \WP_REST_Response( $conversation, 200 );
 	}
@@ -88,8 +87,6 @@ class Conversations_Controller extends Base_Controller {
 			'conversation_id' => $conversation['id'],
 			'user_id'         => get_current_user_id(),
 		] );
-
-		$conversation = prixchat_escape( $conversation );
 
 		return new \WP_REST_Response( $conversation, 201 );
 	}
@@ -230,8 +227,6 @@ class Conversations_Controller extends Base_Controller {
 		$conversation = Conversation::find([
 			'id' => $data['id'],
 		]);
-		
-		$conversation = prixchat_escape( $conversation );
 		
 		return new \WP_REST_Response( $conversation, 200 );
 	}
