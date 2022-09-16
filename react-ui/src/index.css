@@ -1,0 +1,154 @@
+@tailwind components;
+@tailwind utilities;
+
+.text-message {
+  background: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.my-message .text-message {
+  background: #bae6fd;
+}
+
+.pc-wrapper {
+  margin-top: 20px;
+  position: relative;
+  padding: 10px 0;
+  display: flex;
+  background: #fff;
+  height: calc(100vh - 120px);
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pc-wrapper * {
+  box-sizing: border-box;
+}
+
+.pc-wrapper a {
+  text-decoration: none;
+}
+
+.pc-wrapper button,
+.pc-wrapper input,
+.pc-wrapper textarea {
+  border: none;
+  background-color: transparent;
+}
+
+.pc-wrapper input:focus,
+.pc-wrapper textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.pc-wrapper aside {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pc-wrapper .conversations-list {
+  flex: auto;
+}
+.pc-wrapper .conversations-list a {
+  color: #000;
+}
+
+.pc-thin-scrollbar {
+  overflow-y: scroll;
+  height: max-content;
+}
+
+.pc-thin-scrollbar:hover {
+  overflow-y: scroll;
+}
+
+.pc-thin-scrollbar::-webkit-scrollbar {
+  background-color: transparent;
+  width: 8px;
+}
+
+.pc-thin-scrollbar:hover::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pc-thin-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.pc-wrapper .conversations-list a.active .conversation-item {
+  background-color: #0ea5e9;
+  color: #fff;
+}
+
+.pc-wrapper .pc-search-input {
+  border: none;
+  background: #f5f5f5;
+  flex: 1;
+  border: 1px solid #efefef;
+  border-radius: 5px;
+  padding: 2px 10px;
+  color: #666;
+}
+
+.pc-wrapper main {
+  flex: 1;
+}
+
+.pc-wrapper .loading-bar {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #eee;
+}
+
+.pc-wrapper .chat-toolbar {
+  display: flex;
+  padding: 10px;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.pc-avatar {
+  position: relative;
+}
+
+.pc-avatar img {
+  border-radius: 50%;
+}
+
+.pc-avatar-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #ccc;
+  border: 3px solid #fff;
+}
+
+.pc-avatar-indicator.online {
+  background: #0c0;
+}
+
+.conversation-item__message.has-unread {
+  font-weight: bold;
+}
+
+#toplevel_page_prixchat > a > .wp-menu-name > .unread-count {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  margin: 1px 0 -1px 2px;
+  padding: 0 8px;
+  border-radius: 9px;
+  background-color: #0ea5e9;
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: center;
+  z-index: 26;
+  margin-left: 5px;
+}

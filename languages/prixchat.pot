@@ -1,0 +1,113 @@
+# Copyright (C) 2022 PrixChat
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: PrixChat 0.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/prixchat\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-09-03T09:18:45+07:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: prixchat\n"
+
+#. Plugin Name of the plugin
+#. Author of the plugin
+#: src/class-admin.php:19
+#: src/class-admin.php:20
+msgid "PrixChat"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://prixchat.com/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Realtime, effective chat solution for WordPress"
+msgstr ""
+
+#: prixchat.php:16
+msgid "Please do not load this file directly. Thanks!"
+msgstr ""
+
+#: prixchat.php:21
+msgid "I need at least PHP 7.0 to run properly!"
+msgstr ""
+
+#: src/controllers/class-conversations-controller.php:47
+msgid "Title is required"
+msgstr ""
+
+#: src/controllers/class-conversations-controller.php:109
+msgid "You are not a member of this conversation"
+msgstr ""
+
+#: src/controllers/class-conversations-controller.php:162
+msgid "Conversation not found"
+msgstr ""
+
+#: src/controllers/class-messages-controller.php:42
+#: src/controllers/class-messages-controller.php:102
+msgid "Message id is required"
+msgstr ""
+
+#: src/controllers/class-messages-controller.php:56
+#: src/controllers/class-messages-controller.php:112
+msgid "Message not found"
+msgstr ""
+
+#: src/controllers/class-messages-controller.php:62
+msgid "You can not delete this message"
+msgstr ""
+
+#: src/controllers/class-peers-controller.php:21
+msgid "Conversation id is required"
+msgstr ""
+
+#: src/controllers/class-peers-controller.php:27
+msgid "Users is required"
+msgstr ""
+
+#: src/controllers/class-peers-controller.php:72
+msgid "Peer id is required"
+msgstr ""
+
+#: src/controllers/class-peers-controller.php:85
+msgid "Peer not found"
+msgstr ""
+
+#: src/controllers/class-peers-controller.php:91
+msgid "You are not allowed to delete this peer"
+msgstr ""
+
+#: react-ui/dist/index.js:13326
+msgid "Replying to"
+msgstr ""
+
+#: react-ui/dist/index.js:13529
+msgid "Send"
+msgstr ""
+
+#: react-ui/dist/index.js:15338
+msgid "Manage Group"
+msgstr ""
+
+#: react-ui/dist/index.js:15364
+msgid "Leave Conversation"
+msgstr ""
+
+#: react-ui/dist/index.js:16699
+msgid "New Group"
+msgstr ""
+
+#: react-ui/dist/index.js:16735
+msgid "Search..."
+msgstr ""
+
+#: react-ui/dist/index.js:16749
+msgid "Select a chat to start messaging"
+msgstr ""
