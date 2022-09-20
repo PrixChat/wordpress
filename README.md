@@ -1,13 +1,6 @@
-=== PrixChat - Realtime Private & Group Chat Plugin  ===
-Contributors: tanng
-Tags: chat, private chat, group chat, inbox, realtime 
-Requires at least: 5.0
-Tested up to: 6.0.2
-Stable tag: 1.0.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+# PrixChat - Realtime Private & Group Chat Plugin
 
-== Description ==
+## Description
 Just one click install and you have a truly real-time chat app. No third-party services, no ads, no complicated setup.
 
 ### Key Features
@@ -33,12 +26,12 @@ Emoji, peply a message and reaction to a message are included, for free.
 #### New Message Badges 
 Don’t miss any new messages, the new messages badges help people keep in touch with others.
 
-== Installation ==
+## Installation
 1. Upload the plugin files to the `/wp-content/plugins/prixchat` directory or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress.
 1. Go to PrixChat menu and start using it.
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions
 **What makes PrixChat specials?**
 There are dozens of stuffs that makes PrixChat different with other plugins, but at its core, PrixChat uses Server Sent Events which is fast, no complicated setup like others which built on top of long-polling or WebSocket server. The frontend also uses React.js which WordPress already heavy using it. 
 
@@ -58,7 +51,7 @@ If we found a serious bug, the minor patch will come within 24 hours.
 **Help, I have some issues!**
 Please raise a question in plugin's support forum or contact us via hi@prixchat.com
 
-== Changelog ==
+## Changelog 
 
 #### 1.0.0 (September 06th, 2022)
 *Initial Release*
