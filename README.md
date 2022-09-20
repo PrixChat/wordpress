@@ -1,7 +1,8 @@
 # PrixChat - Realtime Private & Group Chat Plugin
 
-## Description
 Just one click install and you have a truly real-time chat app. No third-party services, no ads, no complicated setup.
+
+![Demo](https://prixchat.com/images/demo.jpg)
 
 ### Key Features
 
