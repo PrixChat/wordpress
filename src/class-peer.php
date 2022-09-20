@@ -151,13 +151,13 @@ class Peer {
 
     public static function get_unread_count( $user_id ) {
         global $wpdb;
-
+        
         $query = "SELECT 
                         P.conversation_id, 
                         count(*) as total_unread 
                  FROM 
-                    `wp_prixchat_messages` M, 
-                    `wp_prixchat_peers` P 
+                    `{$wpdb->prefix}prixchat_messages` M, 
+                    `{$wpdb->prefix}prixchat_peers` P 
                 WHERE P.user_id = %d 
                 AND M.conversation_id = P.conversation_id 
                 AND P.last_seen < M.created_at 
