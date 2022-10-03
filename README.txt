@@ -67,11 +67,12 @@ Please raise a question in plugin's support forum or contact us via hi@prixchat.
 ## Changelog 
 
 #### 1.1.0 (October 04rd, 2022)
-- Feature: Settings page.
-- Feature: Custom reaction emoji.
-- Feature: Custom roles to use the chat.
-- Feature: Notification sound URL.
-- Fix: Sometimes, typing indicator stay even when user offline.
+- New: Settings page.
+- New: Custom reaction emoji.
+- New: Custom roles to use the chat.
+- New: Notification sound URL.
+- Fix: Sometimes, typing indicator stay even user offline.
+- Tweak: 40% smaller bundle size.
 
 #### 1.0.0 (September 06th, 2022)
 *Initial Release*
