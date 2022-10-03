@@ -65,6 +65,11 @@ class Message {
 
         $me_inside = false;
         $me_peer   = null;
+
+        if ( ! $conversation ) {
+            return [];
+        }
+        
         foreach ( $conversation->peers as $peer ) {
             if ( $peer->user_id == get_current_user_id() ) {
                 $me_peer   = $peer;
@@ -123,8 +128,6 @@ class Message {
 
                     return $peer;
                 }, $reaction );
-
-                return $reaction;
             }, $message->reactions );
         }
 

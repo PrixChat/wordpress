@@ -2,8 +2,8 @@
 /*
 Plugin Name: PrixChat
 Plugin URI: https://prixchat.com/
-Description: Realtime, effective chat solution for WordPress
-Version: 1.0.0
+Description: Self-hosted realtime group chat and private chat without any third party service.
+Version: 1.1.0
 Author: PrixChat
 License: GPLv2 or later
 Text Domain: prixchat

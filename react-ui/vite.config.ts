@@ -13,13 +13,15 @@ export default defineConfig({
         'src/**/*',
       ],
     },
-    minify: false,
+    sourcemap: true,
+    minify: true,
     rollupOptions: {
       output: {
         entryFileNames: '[name].js',
         chunkFileNames: '[name].js',
         assetFileNames: '[name].[ext]',
       }
-    }
+    },
+    outDir: '../dist'
   }
 })

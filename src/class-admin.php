@@ -12,11 +12,14 @@ class Admin {
 
         // Admin page action handler
         add_action( 'admin_init', [ $this, 'handle_admin_actions' ] );
+
+        add_filter( 'script_loader_tag', [ $this, 'add_type_attribute' ], 10, 3 );
     }
 
     public function add_admin_page() {
-        $allowed_roles = prixchat_get_settings('roles');
-        if (is_string($allowed_roles) && $allowed_roles === 'all') {
+        $allowed_roles = prixchat_get_settings( 'roles' );
+
+        if ( $allowed_roles === 'all' ) {
             $capability = 'read';
         } else {
             $capability = 'use_prixchat';
@@ -48,8 +51,10 @@ class Admin {
             return;
         }
 
-        wp_enqueue_style( 'prixchat-admin', PRIXCHAT_URL . '/react-ui/dist/index.css' );
-        wp_enqueue_script( 'prixchat-admin', PRIXCHAT_URL . '/react-ui/dist/index.js', [ 'wp-i18n' ], '1.0.0', true );
+        $version = defined( 'WP_DEBUG' ) ? time() : '1.1.0';
+
+        wp_enqueue_style( 'prixchat-admin', PRIXCHAT_URL . '/dist/index.css' );
+        wp_enqueue_script( 'prixchat-admin', PRIXCHAT_URL . '/dist/index.js', [ 'wp-i18n' ], $version, true );
         wp_set_script_translations( 'prixchat-admin', 'prixchat' );
 
         $chat_service = new Chat_Service();
@@ -66,34 +71,39 @@ class Admin {
 
         $users = Peer::get_all_users();
 
-        $available_emojis = prixchat_get_settings('emojis');
-        $incoming_messages_sound = prixchat_get_settings('incoming_messages_sound');
-        
+        $available_emojis        = prixchat_get_settings( 'emojis' );
+        $incoming_messages_sound = prixchat_get_settings( 'incoming_messages_sound' );
+
         // Although we are using wp_set_script_translations for i18n, it's useful to use wp_localize_script
         // to pass data to the React app.
         wp_localize_script( 'prixchat-admin', 'prix', [
-            'apiUrl'        => home_url( '/wp-json/prixchat/v1/' ),
-            'nonce'         => wp_create_nonce( 'wp_rest' ),
-            'conversations' => $conversations,
-            'me'            => $me,
-            'users'         => $users,
-            'availableEmojis' => $available_emojis,
+            'apiUrl'                => home_url( '/wp-json/prixchat/v1/' ),
+            'nonce'                 => wp_create_nonce( 'wp_rest' ),
+            'conversations'         => $conversations,
+            'me'                    => $me,
+            'users'                 => $users,
+            'availableEmojis'       => $available_emojis,
             'incomingMessagesSound' => $incoming_messages_sound,
         ] );
+    }
+
+    public function add_type_attribute( $tag, $handle, $src ) {
+        if ( 'prixchat-admin' !== $handle ) {
+            return $tag;
+        }
+
+        return '<script type="module" src="' . esc_url( $src ) . '"></script>';
     }
 
     public function render_admin_page() {
         ?>
         <div class="wrap">
-            <div id="pc-root">
-                <App />
-            </div>
+            <div id="pc-root"></div>
         </div>
         <?php
     }
 
-    public function handle_admin_actions()
-    {
+    public function handle_admin_actions() {
         if ( ! isset( $_POST['prixchat'] ) ) {
             return;
         }
@@ -106,31 +116,30 @@ class Admin {
             return;
         }
 
-        if ( isset( $_POST['prixchat'] ) ) {
-            $settings = [];
-            
-            $settings['emojis'] = isset($_POST['emojis']) ? sanitize_text_field($_POST['emojis']) : '';
-            $settings['incoming_messages_sound'] = isset($_POST['incoming_messages_sound']) ? sanitize_text_field($_POST['incoming_messages_sound']) : '';
-            $settings['roles'] = isset($_POST['roles']) ? serialize($_POST['roles']) : 'all';
+        $settings = [];
 
-            // Update capabilities
-            if (is_array($_POST['roles']) && $_POST['roles'] !== 'all') {
-                $all_roles  = wp_roles()->roles;
-                $all_roles  = array_keys($all_roles);
+        $settings['emojis']                  = isset( $_POST['emojis'] ) ? sanitize_text_field( $_POST['emojis'] ) : '';
+        $settings['incoming_messages_sound'] = isset( $_POST['incoming_messages_sound'] ) ? sanitize_text_field( $_POST['incoming_messages_sound'] ) : '';
+        $settings['roles']                   = isset( $_POST['roles'] ) ? serialize( $_POST['roles'] ) : 'all';
 
-                foreach ($all_roles as $role) {
-                    $role = get_role($role);
+        // Update capabilities
+        if ( isset( $_POST['roles'] ) && is_array( $_POST['roles'] ) && $_POST['roles'] !== 'all' ) {
+            $all_roles = wp_roles()->roles;
+            $all_roles = array_keys( $all_roles );
 
-                    if (in_array($role->name, $_POST['roles'])) {
-                        $role->add_cap('use_prixchat');
-                    } else {
-                        $role->remove_cap('use_prixchat');
-                    }
+            foreach ( $all_roles as $role ) {
+                $role = get_role( $role );
+
+                if ( in_array( $role->name, $_POST['roles'] ) ) {
+                    $role->add_cap( 'use_prixchat' );
+                } else {
+                    $role->remove_cap( 'use_prixchat' );
                 }
             }
-
-            update_option( 'prixchat_settings', $settings );
         }
+
+        update_option( 'prixchat_settings', $settings );
+
     }
 
     public function render_settings_page() {

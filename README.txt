@@ -1,44 +1,46 @@
 === PrixChat - Realtime Private & Group Chat Plugin  ===
-Contributors: tanng
-Tags: chat, private chat, group chat, inbox, realtime 
+Contributors: tanng, prixchat
+Tags: chat, group chat, member chat, live chat
 Requires at least: 5.0
 Tested up to: 6.0.2
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
-Just one click install and you have a truly real-time chat app. No third-party services, no ads, no complicated setup.
+Just one click install and you will have a truly real-time chat app. No third-party services, no complicated setup.
+
+[Home Page](https://prixchat.com) | [GitHub Project](https://github.com/PrixChat/wordpress/) 
 
 ### Key Features
 
-#### Truly Realtime with SSE
+#### ⚡ Truly Realtime with SSE
 Unlike other plugins which make AJAX requests periodically which consumes a lot of server’s resources or use WebSocket which requires a complicated setup and pricey, PrixChat core was built upon SSE which cost less resource than long-polling requests, and no need WS server setup.
 
-#### You Own Your Data
+#### 🪪 You Own Your Data
 Because no third party service required, all data stay at your own server. You truly own it! No risk, for free.
 
-#### Modern, Practical Design.
+#### 🏢 Modern, Practical Design.
 PrixChat frontend was built with React.js with the simple “boring” design that you have seen in other chat apps. No surprise, no need time to learn, just fast and responsive experience.
 
-#### Unlimited Private and Group Chat.
+#### ♾️ Unlimited Private and Group Chat.
 Create unlimited private user to user or group chat. Manage it easily. 
 
-#### Online status, Typing Indicator, Seen.
+#### 🔃 Online status, Typing Indicator, Seen.
 We support all major presence features that a chat system needs to level up user’s experience. 
 
-#### Reply, Reactions, Emoji support.
+#### 💞 Reply, Reactions, Emoji support.
 Emoji, peply a message and reaction to a message are included, for free.
 
-#### New Message Badges 
+#### 🔢 New Message Badges 
 Don’t miss any new messages, the new messages badges help people keep in touch with others.
 
-== Installation ==
+## Installation
 1. Upload the plugin files to the `/wp-content/plugins/prixchat` directory or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress.
 1. Go to PrixChat menu and start using it.
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions
 **What makes PrixChat specials?**
 There are dozens of stuffs that makes PrixChat different with other plugins, but at its core, PrixChat uses Server Sent Events which is fast, no complicated setup like others which built on top of long-polling or WebSocket server. The frontend also uses React.js which WordPress already heavy using it. 
 
@@ -55,7 +57,21 @@ We believe constant update is the key of a healthy software but we also don't wa
 The feature updates releases monthly, every first Tuesday.
 If we found a serious bug, the minor patch will come within 24 hours.
 
-== Changelog ==
+**Help, I have some issues!**
+Please raise a question in plugin's support forum or contact us via hi@prixchat.com
+
+## Screenshots
+1. Main App UI
+1. Settings Page
+
+## Changelog 
+
+#### 1.1.0 (October 04rd, 2022)
+- Feature: Settings page.
+- Feature: Custom reaction emoji.
+- Feature: Custom roles to use the chat.
+- Feature: Notification sound URL.
+- Fix: Sometimes, typing indicator stay even when user offline.
 
 #### 1.0.0 (September 06th, 2022)
 *Initial Release*

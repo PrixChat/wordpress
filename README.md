@@ -1,30 +1,32 @@
 # PrixChat - Realtime Private & Group Chat Plugin
 
-Just one click install and you have a truly real-time chat app. No third-party services, no ads, no complicated setup.
+Just one click install and you will have a truly real-time chat app. No third-party services, no complicated setup.
+
+[Home Page](https://prixchat.com) | [GitHub Project](https://github.com/PrixChat/wordpress/) 
 
 ![Demo](https://prixchat.com/images/demo.jpg)
 
 ### Key Features
 
-#### Truly Realtime with SSE
+#### ⚡ Truly Realtime with SSE
 Unlike other plugins which make AJAX requests periodically which consumes a lot of server’s resources or use WebSocket which requires a complicated setup and pricey, PrixChat core was built upon SSE which cost less resource than long-polling requests, and no need WS server setup.
 
-#### You Own Your Data
+#### 🪪 You Own Your Data
 Because no third party service required, all data stay at your own server. You truly own it! No risk, for free.
 
-#### Modern, Practical Design.
+#### 🏢 Modern, Practical Design.
 PrixChat frontend was built with React.js with the simple “boring” design that you have seen in other chat apps. No surprise, no need time to learn, just fast and responsive experience.
 
-#### Unlimited Private and Group Chat.
+#### ♾️ Unlimited Private and Group Chat.
 Create unlimited private user to user or group chat. Manage it easily. 
 
-#### Online status, Typing Indicator, Seen.
+#### 🔃 Online status, Typing Indicator, Seen.
 We support all major presence features that a chat system needs to level up user’s experience. 
 
-#### Reply, Reactions, Emoji support.
+#### 💞 Reply, Reactions, Emoji support.
 Emoji, peply a message and reaction to a message are included, for free.
 
-#### New Message Badges 
+#### 🔢 New Message Badges 
 Don’t miss any new messages, the new messages badges help people keep in touch with others.
 
 ## Installation
@@ -53,6 +55,13 @@ If we found a serious bug, the minor patch will come within 24 hours.
 Please raise a question in plugin's support forum or contact us via hi@prixchat.com
 
 ## Changelog 
+
+#### 1.1.0 (October 04rd, 2022)
+- Feature: Settings page.
+- Feature: Custom reaction emoji.
+- Feature: Custom roles to use the chat.
+- Feature: Notification sound URL.
+- Fix: Sometimes, typing indicator stay even user offline.
 
 #### 1.0.0 (September 06th, 2022)
 *Initial Release*
