@@ -15,10 +15,17 @@ class Admin {
     }
 
     public function add_admin_page() {
+        $allowed_roles = prixchat_get_settings('roles');
+        if (is_string($allowed_roles) && $allowed_roles === 'all') {
+            $capability = 'read';
+        } else {
+            $capability = 'use_prixchat';
+        }
+
         add_menu_page(
             __( 'PrixChat', 'prixchat' ),
             __( 'PrixChat', 'prixchat' ),
-            'read',
+            $capability,
             'prixchat',
             [ $this, 'render_admin_page' ],
             'dashicons-format-chat',
@@ -30,7 +37,7 @@ class Admin {
             'prixchat',
             __( 'Settings', 'prixchat' ),
             __( 'Settings', 'prixchat' ),
-            'read',
+            'manage_options',
             'prixchat-settings',
             [ $this, 'render_settings_page' ]
         );
@@ -100,6 +107,23 @@ class Admin {
             $settings['emojis'] = isset($_POST['emojis']) ? sanitize_text_field($_POST['emojis']) : '';
             $settings['incoming_messages_sound'] = isset($_POST['incoming_messages_sound']) ? sanitize_text_field($_POST['incoming_messages_sound']) : '';
             $settings['roles'] = isset($_POST['roles']) ? serialize($_POST['roles']) : 'all';
+
+            // Update capabilities
+            if (is_array($_POST['roles']) && $_POST['roles'] !== 'all') {
+                $all_roles  = wp_roles()->roles;
+                $all_roles  = array_keys($all_roles);
+
+                foreach ($all_roles as $role) {
+                    $role = get_role($role);
+
+                    if (in_array($role->name, $_POST['roles'])) {
+                        $role->add_cap('use_prixchat');
+                    } else {
+                        $role->remove_cap('use_prixchat');
+                    }
+                }
+            }
+
             update_option( 'prixchat_settings', $settings );
         }
     }
