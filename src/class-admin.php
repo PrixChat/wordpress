@@ -9,6 +9,9 @@ class Admin {
 
         // Register admin page scripts
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_scripts' ] );
+
+        // Admin page action handler
+        add_action( 'admin_init', [ $this, 'handle_admin_actions' ] );
     }
 
     public function add_admin_page() {
@@ -21,10 +24,20 @@ class Admin {
             'dashicons-format-chat',
             3
         );
+
+        // Add sub menu page
+        add_submenu_page(
+            'prixchat',
+            __( 'Settings', 'prixchat' ),
+            __( 'Settings', 'prixchat' ),
+            'read',
+            'prixchat-settings',
+            [ $this, 'render_settings_page' ]
+        );
     }
 
     public function enqueue_admin_scripts() {
-        if ( get_current_screen()->id !== 'toplevel_page_prixchat' ) {
+        if ( get_current_screen()->id !== 'toplevel_page_prixchat' && get_current_screen()->id !== 'prixchat_page_prixchat-settings' ) {
             return;
         }
 
@@ -60,8 +73,38 @@ class Admin {
     public function render_admin_page() {
         ?>
         <div class="wrap">
-            <div id="pc-root"></div>
+            <div id="pc-root">
+                <App />
+            </div>
         </div>
         <?php
+    }
+
+    public function handle_admin_actions()
+    {
+        if ( ! isset( $_POST['prixchat'] ) ) {
+            return;
+        }
+
+        if ( ! wp_verify_nonce( $_POST['prixchat'], 'prixchat' ) ) {
+            return;
+        }
+
+        if ( ! current_user_can( 'manage_options' ) ) {
+            return;
+        }
+
+        if ( isset( $_POST['prixchat'] ) ) {
+            $settings = [];
+            
+            $settings['emojis'] = isset($_POST['emojis']) ? sanitize_text_field($_POST['emojis']) : '';
+            $settings['incoming_messages_sound'] = isset($_POST['incoming_messages_sound']) ? sanitize_text_field($_POST['incoming_messages_sound']) : '';
+            $settings['roles'] = isset($_POST['roles']) ? serialize($_POST['roles']) : 'all';
+            update_option( 'prixchat_settings', $settings );
+        }
+    }
+
+    public function render_settings_page() {
+        require_once PRIXCHAT_DIR . '/partials/settings.php';
     }
 }
