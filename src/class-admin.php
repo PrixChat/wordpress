@@ -66,6 +66,8 @@ class Admin {
 
         $users = Peer::get_all_users();
 
+        $available_emojis = prixchat_get_settings('emojis');
+       
         // Although we are using wp_set_script_translations for i18n, it's useful to use wp_localize_script
         // to pass data to the React app.
         wp_localize_script( 'prixchat-admin', 'prix', [
@@ -74,6 +76,7 @@ class Admin {
             'conversations' => $conversations,
             'me'            => $me,
             'users'         => $users,
+            'availableEmojis' => $available_emojis,
         ] );
     }
 

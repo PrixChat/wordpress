@@ -7,6 +7,7 @@ type PrixProps = {
     nonce: string,
     language: string,
     users: User[],
+    availableEmojis: string[],
 }
 
 let prixData: PrixProps = (window as any).prix as PrixProps;

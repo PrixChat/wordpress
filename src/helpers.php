@@ -23,7 +23,7 @@ function prixchat_escape( $data ) {
 function prixchat_default_settings()
 {
     $settings = [
-        'emojis' => '😀😂😊😉😍👍',
+        'emojis' => '😀,😂,😊,😉,😍,👍',
         'roles' => 'all',
         'incoming_messages_sound' => '',
     ];
@@ -45,10 +45,8 @@ function prixchat_get_settings( $key = null, $default = false )
 
     if ($key === 'emojis') {
         $emojis = $settings[$key];
-        $emojis = str_replace(' ', '', $emojis);
         $emojis = explode(',', $emojis);
         $emojis = array_unique($emojis);
-
         return $emojis;
     }
 

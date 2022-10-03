@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Peer } from "../models"
 import prixData from "../variables";
 import { usePrixContext } from "./PrixProvider";
+import { timeAgo } from "../utils";
 
 export default function TypingIndicator() {
     const { activeConversation } = usePrixContext();
@@ -18,7 +19,7 @@ export default function TypingIndicator() {
         <div>
             {peers && peers.map(peer =>
                 <div key={peer.id}>
-                    {peer.is_typing && <span>{peer.name} is typing...</span>}
+                    {peer.is_typing && timeAgo(peer?.last_online) === 'online' && <span>{peer.name} is typing...</span>}
                 </div>
             )}
         </div>

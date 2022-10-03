@@ -5,14 +5,14 @@ import { Message } from "../models";
 import prixData from "../variables";
 import { usePrixContext } from "./PrixProvider";
 
-const emojis = [
+const emojis = prixData.availableEmojis ?? [
     '😀',
     '😂',
     '😊',
     '😉',
     '😍',
     '👍',
-]
+];
 
 export default function MessageActions(props: {
     message: Message,

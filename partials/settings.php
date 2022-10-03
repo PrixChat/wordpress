@@ -23,7 +23,7 @@ $emojis_string = implode(',', $emojis);
                     <td>
                         <input type="text" id="emojis" name="emojis" value="<?php esc_html_e($emojis_string) ?>" class="regular-text" />
                         <p class="description">
-                            <?php esc_html_e('Enter all available emojis for reaction in chat app. No need to separate.', 'prixchat'); ?>
+                            <?php esc_html_e('Enter all available emojis for reaction in chat app. Separate by commas.', 'prixchat'); ?>
                         </p>
                     </td>
                 </tr>
