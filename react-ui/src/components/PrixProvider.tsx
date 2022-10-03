@@ -42,7 +42,7 @@ export function useChat(id?: number) {
     const [activeConversation, setActiveConversation] = useState<Conversation>({} as Conversation);
     const [dialogOpen, setDialogOpen] = useState(false);
     const [selectedMessages, setSelectedMessages] = useState<Message[]>([]);
-    const [totalUnread, setTotalUnread] = useState(0);
+    const [totalUnread, setTotalUnread] = useState<number>(0);
     const [search, setSearch, getSearch] = useExtendedState('');
 
     useEffect(() => {
@@ -57,6 +57,22 @@ export function useChat(id?: number) {
             document.querySelector('#toplevel_page_prixchat > a > .wp-menu-name')?.append(spanElement);
         }
 
+        // Play audio if there are unread messages
+        const incomingMessagesSound = prixData.incomingMessagesSound;
+        if (incomingMessagesSound.length > 10) {
+            var audio = new Audio(incomingMessagesSound);
+
+            if (totalUnread > 0) {
+                var playPromise = audio.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => { }).catch(error => {
+                        console.warn('🔇No interaction. Audio muted.');
+                    });
+                }
+            }
+        }
+
         return () => {
             document.title = documentTitle;
             document.querySelector('#toplevel_page_prixchat > a > .wp-menu-name > .unread-count')?.remove();
@@ -67,7 +83,11 @@ export function useChat(id?: number) {
         let initialUnread = 0;
 
         conversations.forEach(conversation => {
-            initialUnread += conversation.unread_count;
+            if (typeof conversation.unread_count !== 'number') {
+                conversation.unread_count = parseInt(conversation.unread_count as any);
+            }
+
+            initialUnread += conversation.unread_count ?? 0;
         });
 
         setTotalUnread(initialUnread);

@@ -81,6 +81,7 @@ export type Conversation = {
     recipient: Peer,
     unread_count: number,
     user_id?: number,
+    incomingMessagesPlayed?: boolean,
 }
 
 export type ReplyTo = {

@@ -8,6 +8,7 @@ type PrixProps = {
     language: string,
     users: User[],
     availableEmojis: string[],
+    incomingMessagesSound: string,
 }
 
 let prixData: PrixProps = (window as any).prix as PrixProps;

@@ -44,7 +44,7 @@ class Admin {
     }
 
     public function enqueue_admin_scripts() {
-        if ( get_current_screen()->id !== 'toplevel_page_prixchat' && get_current_screen()->id !== 'prixchat_page_prixchat-settings' ) {
+        if ( get_current_screen()->id !== 'toplevel_page_prixchat' ) {
             return;
         }
 
@@ -67,7 +67,8 @@ class Admin {
         $users = Peer::get_all_users();
 
         $available_emojis = prixchat_get_settings('emojis');
-       
+        $incoming_messages_sound = prixchat_get_settings('incoming_messages_sound');
+        
         // Although we are using wp_set_script_translations for i18n, it's useful to use wp_localize_script
         // to pass data to the React app.
         wp_localize_script( 'prixchat-admin', 'prix', [
@@ -77,6 +78,7 @@ class Admin {
             'me'            => $me,
             'users'         => $users,
             'availableEmojis' => $available_emojis,
+            'incomingMessagesSound' => $incoming_messages_sound,
         ] );
     }
 
